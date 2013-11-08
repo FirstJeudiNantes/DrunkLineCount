@@ -1,0 +1,1 @@
+perl -e  '$|=4096;sub count{$i++;"\n"};while (<>){s/\n/count()/eg};print "$i\n"' < /var/log/pacman.log
