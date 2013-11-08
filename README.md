@@ -47,3 +47,39 @@ sim51
 The java solution : the beauty of this code is to have an infinity loop that raise an exception with the number of line of the file 
 
 The netcat solution : we start a netcat server that count the number of instruction. When we push it a file, every line is consider as an instruction, so we have the number of line of the file
+=======
+
+alex
+----
+
+1. grep_oc
+
+Counts lines with a simple grep : ./grep_oc.sh <file>
+
+2. ls-l
+
+Counts lines with a sed replacement and a long ls parse with awk : ./grep_oc.sh <file>
+
+3. sed_bc.sh
+
+Counts lines with a sed replacement and a bc calculation
+
+4. brainfuck directory :)
+
+- drafts : with a lot of drafts to work on the main BF programs : countlineinrevhex.bf
+- clean_bf.sh <file.bf> : Simple script that's printing a BF script without comments and newlines
+- bf.rb : A brainfuck interpreter in ruby (original: http://www.stephensykes.com/bf.html)
+  Usage : ruby bf.rb <file.bf>
+- bf_to_c.sh : Brainfuck to C interpreter
+  Usage : ./bf_to_c.sh <file.bf> <file.c>
+  Produce a C code from the BF one and compile it
+- reverse.bf : Reverse a String
+- countlineinrevhex.bf : Counts line and print it in reversing hexa
+
+Usage with ruby BF interpreter (37min for 35k lines):
+cat <file> | ruby bf.rb countlineinrevhex.bf | ruby bf.rb reverse.bf | cat <(echo -n "ibase=16; ") - <(echo) | bc
+
+Usage with C compiler (18s for 674k lines):
+./bf_to_c.sh countlineinrevhex.bf countlineinrevhex.c
+./bf_to_c.sh reverse.bf reverse.c
+cat <file> | ./countlineinrevhex | ./reverse | cat <(echo -n "ibase=16; ") - <(echo) | bc
