@@ -1,0 +1,2 @@
+Do this in a terminal : nc -v -l -p 5555 -c 'j=0; while true; do read i; j=$(( $j +1 ));echo "$j"; done'
+In an other terminal, send the file : cat gpl-3.0.txt - | telnet localhost 5555 
