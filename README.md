@@ -47,7 +47,6 @@ sim51
 The java solution : the beauty of this code is to have an infinity loop that raise an exception with the number of line of the file 
 
 The netcat solution : we start a netcat server that count the number of instruction. When we push it a file, every line is consider as an instruction, so we have the number of line of the file
-=======
 
 alex
 ----
